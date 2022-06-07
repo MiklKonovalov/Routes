@@ -8,7 +8,7 @@
 import UIKit
 
 final class ListTicketsViewController: UIViewController {
-     
+    
     var ticketService = TicketService()
     
     var tickets: [Ticket] = []
@@ -36,7 +36,7 @@ final class ListTicketsViewController: UIViewController {
     
     }
 
-    //MARK: -Private methods
+    //MARK: -Methods
     
     private func fetchTickets() {
         
@@ -77,6 +77,11 @@ extension ListTicketsViewController: UITableViewDelegate {
         let detailModulViewController = DetailModulViewController(index: indexPath.row, isLike: ticket.isLiked ?? false)
         detailModulViewController.modalPresentationStyle = .fullScreen
         self.present(detailModulViewController, animated: true, completion: nil)
+        
+        detailModulViewController.likeDidChange = { isLike in
+            self.tickets[indexPath.row].isLiked = isLike
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -104,17 +109,6 @@ extension ListTicketsViewController: UITableViewDataSource {
             var ticket = self.tickets[indexPath.row]
             ticket.isLiked = isLiked
             self.tickets[indexPath.row] = ticket
-            tableView.reloadData()
-        }
-        
-        detailModulViewController.likeDidChange = {
-            if ticket.isLiked ?? false {
-                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                cell.likeButton.tintColor = .red
-            } else  {
-                cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                cell.likeButton.tintColor = .white
-            }
             tableView.reloadData()
         }
         

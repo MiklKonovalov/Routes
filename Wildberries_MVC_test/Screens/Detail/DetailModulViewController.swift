@@ -17,7 +17,7 @@ final class DetailModulViewController: UIViewController {
     
     var isLike: Bool
     
-    var likeDidChange: (() -> ())?
+    var likeDidChange: ((Bool) -> ())?
     
     var startCityLabel: UILabel = {
         let label = UILabel()
@@ -128,7 +128,6 @@ final class DetailModulViewController: UIViewController {
             self.likeButton.setTitle("Сделать любимым", for: .normal)
             self.likeButton.backgroundColor = .white
         }
-        
     }
     
     //Functions
@@ -182,7 +181,7 @@ final class DetailModulViewController: UIViewController {
             self.likeButton.backgroundColor = .white
             isLike = false
         }
-        likeDidChange?()
+        likeDidChange?(isLike)
     }
     
     @objc func backButtonPressed() {

@@ -78,8 +78,8 @@
             filePath = "Wildberries_MVC_test/Screens/Tickets/ListTicketsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -119,15 +119,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5A7C016A-1046-476B-94E8-C5348A11850C"
-            shouldBeEnabled = "Yes"
+            uuid = "D09273C8-EB7B-4CF7-9B73-89D72A4BC00E"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wildberries_MVC_test/Screens/Detail/DetailModulViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "likeButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>
