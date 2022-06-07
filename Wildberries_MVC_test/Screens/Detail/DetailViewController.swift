@@ -1,5 +1,5 @@
 //
-//  DetailModulViewController.swift
+//  DetailViewController.swift
 //  Wildberries_MVC_test
 //
 //  Created by Misha on 06.06.2022.
@@ -7,19 +7,19 @@
 
 import UIKit
 
-final class DetailModulViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
-    var ticketService = TicketService()
+    private var ticketService = TicketService()
     
-    var tickets: [Ticket] = []
+    private var tickets: [Ticket] = []
     
-    var index: Int
+    private var index: Int
     
-    var isLike: Bool
+    private var isLike: Bool
     
     var likeDidChange: ((Bool) -> ())?
     
-    var startCityLabel: UILabel = {
+    private var startCityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .white
@@ -28,7 +28,7 @@ final class DetailModulViewController: UIViewController {
         return label
     }()
     
-    var endCityLabel: UILabel = {
+    private var endCityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .white
@@ -37,7 +37,7 @@ final class DetailModulViewController: UIViewController {
         return label
     }()
     
-    var startDateLabel: UILabel = {
+    private var startDateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .white
@@ -46,7 +46,7 @@ final class DetailModulViewController: UIViewController {
         return label
     }()
     
-    var endDateLabel: UILabel = {
+    private var endDateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .white
@@ -55,7 +55,7 @@ final class DetailModulViewController: UIViewController {
         return label
     }()
     
-    var priceLabel: UILabel = {
+    private var priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 26, weight: .regular)
         label.textColor = .white
@@ -64,7 +64,7 @@ final class DetailModulViewController: UIViewController {
         return label
     }()
     
-    lazy var likeButton: UIButton = {
+    private lazy var likeButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(UIColor.blue, for: .normal)
         button.setTitle("Сделать любимым", for: .normal)
@@ -73,7 +73,7 @@ final class DetailModulViewController: UIViewController {
         return button
     }()
     
-   let backButton: UIButton = {
+    private let backButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrowshape.turn.up.backward.fill"), for: .normal)
         button.tintColor = .white
@@ -130,9 +130,9 @@ final class DetailModulViewController: UIViewController {
         }
     }
     
-    //Functions
+    //MARK: -Methods
     
-    func configure(with model: Ticket) {
+    private func configure(with model: Ticket) {
         self.startCityLabel.text = "Откуда: \(model.startCity)"
         self.endCityLabel.text = "Куда: \(model.endCity)"
         self.startDateLabel.text = "Туда: \(DateService.convertDate(date: model.startDate))"
@@ -140,7 +140,7 @@ final class DetailModulViewController: UIViewController {
         self.priceLabel.text = "\(String(describing: model.price)) руб"
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         
         backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
@@ -169,7 +169,7 @@ final class DetailModulViewController: UIViewController {
         
     }
     
-    //Selectors
+    //MARK: -Selectors
     
     @objc func likeButtonPressed() {
         if isLike == false {

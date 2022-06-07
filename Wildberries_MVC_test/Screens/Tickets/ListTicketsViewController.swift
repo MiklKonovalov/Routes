@@ -9,11 +9,11 @@ import UIKit
 
 final class ListTicketsViewController: UIViewController {
     
-    var ticketService = TicketService()
+    private var ticketService = TicketService()
     
-    var tickets: [Ticket] = []
+    private var tickets: [Ticket] = []
     
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = UIColor.white
         tableView.separatorColor = .white
@@ -32,11 +32,28 @@ final class ListTicketsViewController: UIViewController {
 
         setupTableView()
         
+        createSpinnerView()
+        
         fetchTickets()
     
     }
 
     //MARK: -Methods
+    
+    private func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
     
     private func fetchTickets() {
         
@@ -53,7 +70,7 @@ final class ListTicketsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
             
-        tableView.register(ListTicketsModulCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(ListTicketsCell.self, forCellReuseIdentifier: "cellId")
             
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -74,7 +91,7 @@ extension ListTicketsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         let ticket = tickets[indexPath.row]
-        let detailModulViewController = DetailModulViewController(index: indexPath.row, isLike: ticket.isLiked ?? false)
+        let detailModulViewController = DetailViewController(index: indexPath.row, isLike: ticket.isLiked ?? false)
         detailModulViewController.modalPresentationStyle = .fullScreen
         self.present(detailModulViewController, animated: true, completion: nil)
         
@@ -93,7 +110,7 @@ extension ListTicketsViewController: UITableViewDataSource {
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! ListTicketsModulCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! ListTicketsCell
         let ticket = tickets[indexPath.row]
         cell.configure(with: ticket)
         

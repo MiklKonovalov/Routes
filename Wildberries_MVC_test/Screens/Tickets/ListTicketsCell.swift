@@ -1,5 +1,5 @@
 //
-//  ListTicketsModulCell.swift
+//  ListTicketsCell.swift
 //  Wildberries_MVC_test
 //
 //  Created by Misha on 05.06.2022.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ListTicketsModulCell: UITableViewCell {
+final class ListTicketsCell: UITableViewCell {
     
-    var startCityLabel: UILabel = {
+    private var startCityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .white
@@ -18,7 +18,7 @@ class ListTicketsModulCell: UITableViewCell {
         return label
     }()
     
-    var endCityLabel: UILabel = {
+    private var endCityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .white
@@ -27,7 +27,7 @@ class ListTicketsModulCell: UITableViewCell {
         return label
     }()
     
-    var startDateLabel: UILabel = {
+    private var startDateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .white
@@ -36,7 +36,7 @@ class ListTicketsModulCell: UITableViewCell {
         return label
     }()
     
-    var endDateLabel: UILabel = {
+    private var endDateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .white
@@ -45,7 +45,7 @@ class ListTicketsModulCell: UITableViewCell {
         return label
     }()
     
-    var priceLabel: UILabel = {
+    private var priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 26, weight: .regular)
         label.textColor = .white
@@ -65,7 +65,7 @@ class ListTicketsModulCell: UITableViewCell {
         return button
     }()
     
-    var isButtonPressed: Bool = false
+    private var isButtonPressed: Bool = false
     
     var didTapLike: ((Bool) -> ())?
     
@@ -95,7 +95,7 @@ class ListTicketsModulCell: UITableViewCell {
         self.priceLabel.text = "\(String(describing: model.price)) руб"
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         
         startCityLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30).isActive = true
         startCityLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true

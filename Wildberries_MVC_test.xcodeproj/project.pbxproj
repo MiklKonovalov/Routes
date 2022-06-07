@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C658CCDF284E3714004823C8 /* DetailModulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658CCDE284E3714004823C8 /* DetailModulViewController.swift */; };
+		C658CCDF284E3714004823C8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658CCDE284E3714004823C8 /* DetailViewController.swift */; };
 		C658CCE7284FE9ED004823C8 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658CCE6284FE9ED004823C8 /* DateService.swift */; };
+		C658CCE9284FFA40004823C8 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658CCE8284FFA40004823C8 /* SpinnerViewController.swift */; };
 		C67CEBF2284CF63E00867556 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEBF1284CF63E00867556 /* AppDelegate.swift */; };
 		C67CEBF4284CF63E00867556 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEBF3284CF63E00867556 /* SceneDelegate.swift */; };
 		C67CEBF6284CF63E00867556 /* ListTicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEBF5284CF63E00867556 /* ListTicketsViewController.swift */; };
 		C67CEBFB284CF64800867556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67CEBFA284CF64800867556 /* Assets.xcassets */; };
 		C67CEBFE284CF64800867556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C67CEBFC284CF64800867556 /* LaunchScreen.storyboard */; };
-		C67CEC10284CFE6D00867556 /* ListTicketsModulCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC0F284CFE6D00867556 /* ListTicketsModulCell.swift */; };
+		C67CEC10284CFE6D00867556 /* ListTicketsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC0F284CFE6D00867556 /* ListTicketsCell.swift */; };
 		C67CEC13284D01FC00867556 /* TicketsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC12284D01FC00867556 /* TicketsResponse.swift */; };
 		C67CEC19284D076700867556 /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC18284D076700867556 /* TicketService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C658CCDE284E3714004823C8 /* DetailModulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModulViewController.swift; sourceTree = "<group>"; };
+		C658CCDE284E3714004823C8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C658CCE6284FE9ED004823C8 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
+		C658CCE8284FFA40004823C8 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		C67CEBEE284CF63E00867556 /* Wildberries_MVC_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wildberries_MVC_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C67CEBF1284CF63E00867556 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C67CEBF3284CF63E00867556 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +31,7 @@
 		C67CEBFA284CF64800867556 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C67CEBFD284CF64800867556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C67CEBFF284CF64800867556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C67CEC0F284CFE6D00867556 /* ListTicketsModulCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTicketsModulCell.swift; sourceTree = "<group>"; };
+		C67CEC0F284CFE6D00867556 /* ListTicketsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTicketsCell.swift; sourceTree = "<group>"; };
 		C67CEC12284D01FC00867556 /* TicketsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsResponse.swift; sourceTree = "<group>"; };
 		C67CEC18284D076700867556 /* TicketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,7 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				C67CEBF5284CF63E00867556 /* ListTicketsViewController.swift */,
-				C67CEC0F284CFE6D00867556 /* ListTicketsModulCell.swift */,
+				C67CEC0F284CFE6D00867556 /* ListTicketsCell.swift */,
 			);
 			path = Tickets;
 			sourceTree = "<group>";
@@ -57,9 +59,17 @@
 		C658CCE5284FE4D5004823C8 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				C658CCDE284E3714004823C8 /* DetailModulViewController.swift */,
+				C658CCDE284E3714004823C8 /* DetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C658CCEA284FFA44004823C8 /* Spinner */ = {
+			isa = PBXGroup;
+			children = (
+				C658CCE8284FFA40004823C8 /* SpinnerViewController.swift */,
+			);
+			path = Spinner;
 			sourceTree = "<group>";
 		};
 		C67CEBE5284CF63E00867556 = {
@@ -114,6 +124,7 @@
 			children = (
 				C658CCE4284FE4C4004823C8 /* Tickets */,
 				C658CCE5284FE4D5004823C8 /* Detail */,
+				C658CCEA284FFA44004823C8 /* Spinner */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -197,12 +208,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C67CEBF6284CF63E00867556 /* ListTicketsViewController.swift in Sources */,
-				C67CEC10284CFE6D00867556 /* ListTicketsModulCell.swift in Sources */,
+				C67CEC10284CFE6D00867556 /* ListTicketsCell.swift in Sources */,
 				C67CEC13284D01FC00867556 /* TicketsResponse.swift in Sources */,
 				C658CCE7284FE9ED004823C8 /* DateService.swift in Sources */,
 				C67CEBF2284CF63E00867556 /* AppDelegate.swift in Sources */,
 				C67CEC19284D076700867556 /* TicketService.swift in Sources */,
-				C658CCDF284E3714004823C8 /* DetailModulViewController.swift in Sources */,
+				C658CCDF284E3714004823C8 /* DetailViewController.swift in Sources */,
+				C658CCE9284FFA40004823C8 /* SpinnerViewController.swift in Sources */,
 				C67CEBF4284CF63E00867556 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
