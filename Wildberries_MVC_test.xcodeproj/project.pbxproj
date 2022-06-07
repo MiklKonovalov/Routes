@@ -8,21 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		C658CCDF284E3714004823C8 /* DetailModulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658CCDE284E3714004823C8 /* DetailModulViewController.swift */; };
-		C658CCE3284E588D004823C8 /* ButtonSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658CCE2284E588D004823C8 /* ButtonSettings.swift */; };
+		C658CCE7284FE9ED004823C8 /* DateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C658CCE6284FE9ED004823C8 /* DateService.swift */; };
 		C67CEBF2284CF63E00867556 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEBF1284CF63E00867556 /* AppDelegate.swift */; };
 		C67CEBF4284CF63E00867556 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEBF3284CF63E00867556 /* SceneDelegate.swift */; };
 		C67CEBF6284CF63E00867556 /* ListTicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEBF5284CF63E00867556 /* ListTicketsViewController.swift */; };
 		C67CEBFB284CF64800867556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67CEBFA284CF64800867556 /* Assets.xcassets */; };
 		C67CEBFE284CF64800867556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C67CEBFC284CF64800867556 /* LaunchScreen.storyboard */; };
 		C67CEC10284CFE6D00867556 /* ListTicketsModulCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC0F284CFE6D00867556 /* ListTicketsModulCell.swift */; };
-		C67CEC13284D01FC00867556 /* Tickets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC12284D01FC00867556 /* Tickets.swift */; };
-		C67CEC19284D076700867556 /* ListTicketsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC18284D076700867556 /* ListTicketsNetworkService.swift */; };
-		C67CEC1E284D0A2400867556 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC1D284D0A2400867556 /* NetworkError.swift */; };
+		C67CEC13284D01FC00867556 /* TicketsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC12284D01FC00867556 /* TicketsResponse.swift */; };
+		C67CEC19284D076700867556 /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67CEC18284D076700867556 /* TicketService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C658CCDE284E3714004823C8 /* DetailModulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModulViewController.swift; sourceTree = "<group>"; };
-		C658CCE2284E588D004823C8 /* ButtonSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSettings.swift; sourceTree = "<group>"; };
+		C658CCE6284FE9ED004823C8 /* DateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateService.swift; sourceTree = "<group>"; };
 		C67CEBEE284CF63E00867556 /* Wildberries_MVC_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wildberries_MVC_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C67CEBF1284CF63E00867556 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C67CEBF3284CF63E00867556 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,9 +30,8 @@
 		C67CEBFD284CF64800867556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C67CEBFF284CF64800867556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C67CEC0F284CFE6D00867556 /* ListTicketsModulCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTicketsModulCell.swift; sourceTree = "<group>"; };
-		C67CEC12284D01FC00867556 /* Tickets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tickets.swift; sourceTree = "<group>"; };
-		C67CEC18284D076700867556 /* ListTicketsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTicketsNetworkService.swift; sourceTree = "<group>"; };
-		C67CEC1D284D0A2400867556 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		C67CEC12284D01FC00867556 /* TicketsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsResponse.swift; sourceTree = "<group>"; };
+		C67CEC18284D076700867556 /* TicketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +45,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C658CCE4284FE4C4004823C8 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				C67CEBF5284CF63E00867556 /* ListTicketsViewController.swift */,
+				C67CEC0F284CFE6D00867556 /* ListTicketsModulCell.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		C658CCE5284FE4D5004823C8 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C658CCDE284E3714004823C8 /* DetailModulViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		C67CEBE5284CF63E00867556 = {
 			isa = PBXGroup;
 			children = (
@@ -66,100 +81,50 @@
 		C67CEBF0284CF63E00867556 /* Wildberries_MVC_test */ = {
 			isa = PBXGroup;
 			children = (
-				C67CEC08284CFA6200867556 /* Application */,
-				C67CEC09284CFA9C00867556 /* ListTicketsModul */,
+				C67CEC08284CFA6200867556 /* Core */,
+				C67CEC17284D071700867556 /* Services */,
+				C67CEC0A284CFAB100867556 /* Models */,
+				C67CEC0C284CFACA00867556 /* Screens */,
 				C67CEBFA284CF64800867556 /* Assets.xcassets */,
 				C67CEBFF284CF64800867556 /* Info.plist */,
 			);
 			path = Wildberries_MVC_test;
 			sourceTree = "<group>";
 		};
-		C67CEC05284CFA3800867556 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C67CEC1D284D0A2400867556 /* NetworkError.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C67CEC06284CFA4400867556 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C67CEBFC284CF64800867556 /* LaunchScreen.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C67CEC07284CFA4A00867556 /* Controller */ = {
+		C67CEC08284CFA6200867556 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				C67CEBF1284CF63E00867556 /* AppDelegate.swift */,
 				C67CEBF3284CF63E00867556 /* SceneDelegate.swift */,
+				C67CEBFC284CF64800867556 /* LaunchScreen.storyboard */,
 			);
-			path = Controller;
+			path = Core;
 			sourceTree = "<group>";
 		};
-		C67CEC08284CFA6200867556 /* Application */ = {
+		C67CEC0A284CFAB100867556 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C67CEC05284CFA3800867556 /* Model */,
-				C67CEC06284CFA4400867556 /* View */,
-				C67CEC07284CFA4A00867556 /* Controller */,
+				C67CEC12284D01FC00867556 /* TicketsResponse.swift */,
 			);
-			path = Application;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		C67CEC09284CFA9C00867556 /* ListTicketsModul */ = {
+		C67CEC0C284CFACA00867556 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C67CEC0A284CFAB100867556 /* Model */,
-				C67CEC0B284CFAC200867556 /* View */,
-				C67CEC0C284CFACA00867556 /* Controllers */,
+				C658CCE4284FE4C4004823C8 /* Tickets */,
+				C658CCE5284FE4D5004823C8 /* Detail */,
 			);
-			path = ListTicketsModul;
+			path = Screens;
 			sourceTree = "<group>";
 		};
-		C67CEC0A284CFAB100867556 /* Model */ = {
+		C67CEC17284D071700867556 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C67CEC12284D01FC00867556 /* Tickets.swift */,
-				C658CCE2284E588D004823C8 /* ButtonSettings.swift */,
-				C67CEC17284D071700867556 /* ListTicketsModulNetworkService */,
+				C67CEC18284D076700867556 /* TicketService.swift */,
+				C658CCE6284FE9ED004823C8 /* DateService.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C67CEC0B284CFAC200867556 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C67CEC11284CFED100867556 /* Cells */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C67CEC0C284CFACA00867556 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				C67CEBF5284CF63E00867556 /* ListTicketsViewController.swift */,
-				C658CCDE284E3714004823C8 /* DetailModulViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		C67CEC11284CFED100867556 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				C67CEC0F284CFE6D00867556 /* ListTicketsModulCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		C67CEC17284D071700867556 /* ListTicketsModulNetworkService */ = {
-			isa = PBXGroup;
-			children = (
-				C67CEC18284D076700867556 /* ListTicketsNetworkService.swift */,
-			);
-			path = ListTicketsModulNetworkService;
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,13 +198,12 @@
 			files = (
 				C67CEBF6284CF63E00867556 /* ListTicketsViewController.swift in Sources */,
 				C67CEC10284CFE6D00867556 /* ListTicketsModulCell.swift in Sources */,
-				C67CEC13284D01FC00867556 /* Tickets.swift in Sources */,
+				C67CEC13284D01FC00867556 /* TicketsResponse.swift in Sources */,
+				C658CCE7284FE9ED004823C8 /* DateService.swift in Sources */,
 				C67CEBF2284CF63E00867556 /* AppDelegate.swift in Sources */,
-				C67CEC19284D076700867556 /* ListTicketsNetworkService.swift in Sources */,
+				C67CEC19284D076700867556 /* TicketService.swift in Sources */,
 				C658CCDF284E3714004823C8 /* DetailModulViewController.swift in Sources */,
-				C67CEC1E284D0A2400867556 /* NetworkError.swift in Sources */,
 				C67CEBF4284CF63E00867556 /* SceneDelegate.swift in Sources */,
-				C658CCE3284E588D004823C8 /* ButtonSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

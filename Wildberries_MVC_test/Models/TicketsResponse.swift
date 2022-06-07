@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APIResponse: Decodable {
+struct TicketsResponse: Decodable {
     let meta: Meta
     let data: [Ticket]
 }
@@ -21,6 +21,7 @@ struct Ticket: Decodable {
     let endDate: String
     let price: Int
     let searchToken: String
+    var isLiked: Bool? = false
 
 }
 struct Meta: Decodable {

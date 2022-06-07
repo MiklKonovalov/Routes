@@ -7,20 +7,11 @@
 
 import UIKit
 
-struct Likes {
-    let id: Int
-    let isLike: Bool
-}
-
 final class ListTicketsViewController: UIViewController {
      
-    var listTicketsNetworkService = ListTicketsNetworkService()
+    var ticketService = TicketService()
     
     var tickets: [Ticket] = []
-    
-    var likesDict: [Int:Bool] = [:]
-    
-    var likesArray: [Likes] = []
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -32,28 +23,33 @@ final class ListTicketsViewController: UIViewController {
         return tableView
     }()
             
-    //Lifecycle
+    //MARK: -Lifecycle
         
     override func viewDidLoad() {
         super.viewDidLoad()
             
         view.backgroundColor = .white
 
-        view.addSubview(tableView)
-            
         setupTableView()
         
-        listTicketsNetworkService.getTickets { response in
-            DispatchQueue.main.async {
-                self.tickets = response.data
-                self.tableView.reloadData()
-            }
-        }
+        fetchTickets()
+    
     }
 
-    //Functions
+    //MARK: -Private methods
+    
+    private func fetchTickets() {
         
-    func setupTableView() {
+        ticketService.getTickets { [weak self] tickets in
+            guard let self = self else { return }
+            self.tickets = tickets
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func setupTableView() {
+        view.addSubview(tableView)
+        
         tableView.delegate = self
         tableView.dataSource = self
             
@@ -68,6 +64,7 @@ final class ListTicketsViewController: UIViewController {
     
 }
 
+//MARK: -UITableViewDelegate
 extension ListTicketsViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -75,14 +72,15 @@ extension ListTicketsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailModulViewController = DetailModulViewController(index: indexPath.row
-        )
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let ticket = tickets[indexPath.row]
+        let detailModulViewController = DetailModulViewController(index: indexPath.row, isLike: ticket.isLiked ?? false)
         detailModulViewController.modalPresentationStyle = .fullScreen
         self.present(detailModulViewController, animated: true, completion: nil)
-        self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
+//MARK: -UITableViewDataSource
 extension ListTicketsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,39 +92,34 @@ extension ListTicketsViewController: UITableViewDataSource {
         let ticket = tickets[indexPath.row]
         cell.configure(with: ticket)
         
-        if cell.isButtonPressed == true {
+        if ticket.isLiked ?? false {
             cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             cell.likeButton.tintColor = .red
-        } else if cell.isButtonPressed == false {
+        } else  {
             cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             cell.likeButton.tintColor = .white
         }
-        
-        likesDict = UserDefaults.standard.object(forKey: "Like") as? [Int : Bool] ?? [Int:Bool]()
-        print(likesDict)
-        
+
         cell.didTapLike = { isLiked in
-            self.likesDict.updateValue(isLiked, forKey: indexPath.row)
-            cell.isButtonPressed = isLiked
-            UserDefaults.standard.set(isLiked, forKey: "Like")
-            print(self.likesDict)
+            var ticket = self.tickets[indexPath.row]
+            ticket.isLiked = isLiked
+            self.tickets[indexPath.row] = ticket
+            tableView.reloadData()
+        }
+        
+        detailModulViewController.likeDidChange = {
+            if ticket.isLiked ?? false {
+                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                cell.likeButton.tintColor = .red
+            } else  {
+                cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                cell.likeButton.tintColor = .white
+            }
+            tableView.reloadData()
         }
         
         cell.backgroundColor = UIColor.systemBlue
         return cell
-    }
-    
+    }    
 }
 
-extension ListTicketsViewController {
-
-    func convertDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        guard let date = dateFormatter.date(from: date) else { return "Нет даты" }
-        dateFormatter.dateFormat = "dd MMMM"
-        let dateString = dateFormatter.string(from: date)
-        return dateString
-    }
-}

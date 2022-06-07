@@ -81,8 +81,6 @@ class ListTicketsModulCell: UITableViewCell {
         
         setupConstraints()
         
-        //isButtonPressed = ButtonSettings.isButtonTapped
-        
     }
         
     required init?(coder aDecoder: NSCoder) {
@@ -92,8 +90,8 @@ class ListTicketsModulCell: UITableViewCell {
     func configure(with model: Ticket) {
         self.startCityLabel.text = model.startCity
         self.endCityLabel.text = model.endCity
-        self.startDateLabel.text = model.startDate
-        self.endDateLabel.text = model.endDate
+        self.startDateLabel.text = "Туда: \(DateService.convertDate(date: model.startDate))"
+        self.endDateLabel.text = "Обратно: \(DateService.convertDate(date:model.endDate))"
         self.priceLabel.text = "\(String(describing: model.price)) руб"
     }
     

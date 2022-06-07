@@ -9,11 +9,15 @@ import UIKit
 
 final class DetailModulViewController: UIViewController {
     
-    var index: Int
-    
-    var listTicketsNetworkService = ListTicketsNetworkService()
+    var ticketService = TicketService()
     
     var tickets: [Ticket] = []
+    
+    var index: Int
+    
+    var isLike: Bool
+    
+    var likeDidChange: (() -> ())?
     
     var startCityLabel: UILabel = {
         let label = UILabel()
@@ -62,7 +66,7 @@ final class DetailModulViewController: UIViewController {
     
     lazy var likeButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemGreen
+        button.setTitleColor(UIColor.blue, for: .normal)
         button.setTitle("Сделать любимым", for: .normal)
         button.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -78,18 +82,20 @@ final class DetailModulViewController: UIViewController {
         return button
     }()
     
-    //Init
+    //MARK: -Init
     
-    init(index: Int) {
+    init(index: Int, isLike: Bool) {
         self.index = index
+        self.isLike = isLike
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
-    //Lifecycle
+    //MARK: -Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,23 +112,32 @@ final class DetailModulViewController: UIViewController {
         
         setupConstraints()
         
-        listTicketsNetworkService.getTickets { response in
+        ticketService.getTickets { tickets in
             DispatchQueue.main.async {
-                self.tickets = response.data
-                let ticket = response.data[self.index]
+                self.tickets = tickets
+                let ticket = tickets[self.index]
                 self.configure(with: ticket)
                 self.reloadInputViews()
             }
         }
+
+        if isLike == true {
+            self.likeButton.setTitle("Любимый перелёт", for: .normal)
+            self.likeButton.backgroundColor = .red
+        } else {
+            self.likeButton.setTitle("Сделать любимым", for: .normal)
+            self.likeButton.backgroundColor = .white
+        }
+        
     }
     
     //Functions
-       
+    
     func configure(with model: Ticket) {
         self.startCityLabel.text = "Откуда: \(model.startCity)"
         self.endCityLabel.text = "Куда: \(model.endCity)"
-        self.startDateLabel.text = "Туда: \(model.startDate)"
-        self.endDateLabel.text = "Обратно: \(model.endDate)"
+        self.startDateLabel.text = "Туда: \(DateService.convertDate(date: model.startDate))"
+        self.endDateLabel.text = "Обратно: \(DateService.convertDate(date:model.endDate))"
         self.priceLabel.text = "\(String(describing: model.price)) руб"
     }
     
@@ -158,8 +173,16 @@ final class DetailModulViewController: UIViewController {
     //Selectors
     
     @objc func likeButtonPressed() {
-        self.likeButton.setTitle("Любимый перелёт", for: .normal)
-        self.likeButton.setTitleColor(UIColor.purple, for: .normal)
+        if isLike == false {
+            self.likeButton.setTitle("Любимый перелёт", for: .normal)
+            self.likeButton.backgroundColor = .red
+            isLike = true
+        } else {
+            self.likeButton.setTitle("Сделать любимым", for: .normal)
+            self.likeButton.backgroundColor = .white
+            isLike = false
+        }
+        likeDidChange?()
     }
     
     @objc func backButtonPressed() {
